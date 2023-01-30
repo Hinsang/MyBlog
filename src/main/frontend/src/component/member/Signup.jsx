@@ -9,12 +9,13 @@ export default function Signup() {
             mpw : document.querySelector(".mpw").value
         }
 
-        axios.post("/member/signup", info)
+        axios.post("/member/setsignup", info)
         .then(
             (res) => {
                 let result = res.data
-                if(result != 0) {
+                if(result != false) {
                     alert("회원가입 성공!!")
+                    window.location.href = "/"
                 } else {
                     alert("회원가입 실패!!")
                 }
@@ -29,11 +30,11 @@ export default function Signup() {
     }
 
     return (
-        <div>
+        <div className="inner">
             <h1>회원가입</h1>
-            <form>
-                아이디<input type="text" class="mid" /><br />
-                패스워드<input type="text" class="mpw" /><br />
+            <form className="signup_form">
+                아이디<input type="text" className="mid" /><br />
+                패스워드<input type="text" className="mpw" /><br />
                 <button type="button" onClick={signup}>회원가입</button>
             </form>
         </div>

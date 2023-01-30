@@ -12,15 +12,26 @@ public class Webconfiguration extends WebMvcConfigurerAdapter {
     // 1. 스프링 아키텍처에서 사용되는 컨트롤 핸들러 뷰 경로 바꾸자.
 
     @Override
+
     public void addViewControllers(ViewControllerRegistry registry) {
 
         //super.addViewControllers(registry);
+
+
+
         registry.addViewController("/{spring:\\w+}")
+
                 .setViewName("forward:/");
+
         registry.addViewController("/**/{spring:\\w+}")
+
                 .setViewName("forward:/");
+
         registry.addViewController("/{spring:\\w+}/**{spring:?!(\\.js|\\.css)$}")
+
                 .setViewName("forward:/");
+
+
 
     }
 

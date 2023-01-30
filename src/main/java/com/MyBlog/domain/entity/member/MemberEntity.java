@@ -2,6 +2,10 @@ package com.MyBlog.domain.entity.member;
 
 import com.MyBlog.domain.dto.BoardDto;
 import com.MyBlog.domain.dto.MemberDto;
+import com.MyBlog.domain.entity.BaseEntity;
+import com.MyBlog.domain.entity.board.BoardEntity;
+import com.MyBlog.domain.entity.board.CommentEntity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,7 +20,7 @@ import java.util.List;
 @Setter
 @ToString
 @Builder
-public class MemberEntity {
+public class MemberEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +28,17 @@ public class MemberEntity {
     String mid;
     String mpw;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "memberEntity")
     @Builder.Default
     @ToString.Exclude
-    private List<BoardDto> boardEntityList = new ArrayList<>();
+    private List<BoardEntity> boardEntityList = new ArrayList<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "memberEntity")
+    @Builder.Default
+    @ToString.Exclude
+    private List<CommentEntity> commentEntityList = new ArrayList<>();
 
     public MemberDto toDto() {
         return MemberDto.builder()

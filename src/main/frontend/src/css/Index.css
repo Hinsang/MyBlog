@@ -1,0 +1,18 @@
+.inner {
+    text-decoration: none;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.header_menu {
+    width: 1200px;
+    height: 100px;
+    margin: 0 auto;
+    text-align: right;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.signup_form {
+    width: 200px;
+}

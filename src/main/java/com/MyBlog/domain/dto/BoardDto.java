@@ -11,14 +11,16 @@ import lombok.*;
 @Builder
 public class BoardDto {
 
-    int bno;
-    String bname;
-    String bcontent;
+    private int bno;
+    private String btitle;
+    private String bcontent;
+    private String mid;
+    private String bdate;
 
-    private BoardEntity toEntity() {
+    public BoardEntity toEntity() {
         return BoardEntity.builder()
                 .bno(this.bno)
-                .bname(this.bname)
+                .btitle(this.btitle)
                 .bcontent(this.bcontent)
                 .build();
     }
